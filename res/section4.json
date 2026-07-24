@@ -1,0 +1,182 @@
+[
+  {
+    "question": "A multinational corporation is designing a new highly secure network architecture. They decide to implement a framework that assumes no user or device is trusted by default, regardless of whether they are inside or outside the corporate network perimeter. Which security model are they adopting?",
+    "choice1": "Defense in Depth",
+    "choice2": "Zero Trust Architecture",
+    "choice3": "Perimeter-Based Security",
+    "choice4": "Mandatory Access Control",
+    "answer": 2,
+    "answerText": "Zero Trust Architecture assumes that threats can exist anywhere and requires strict identity verification for every person and device attempting to access resources."
+  },
+  {
+    "question": "During a threat hunting exercise, an analyst discovers evidence that an attacker has established a persistent presence on a critical server. The attacker is using a technique that involves modifying the Windows Registry Run keys to ensure their malware executes upon system reboot. Which MITRE ATT&CK tactic does this represent?",
+    "choice1": "Initial Access",
+    "choice2": "Execution",
+    "choice3": "Persistence",
+    "choice4": "Privilege Escalation",
+    "answer": 3,
+    "answerText": "Modifying Run keys is a common technique used by attackers to maintain persistence across system reboots."
+  },
+  {
+    "question": "A security operations center (SOC) detects unusual outbound traffic from an internal database server to an unknown external IP address over port 53. The traffic payload appears to contain encoded data rather than standard DNS queries. What attack technique is likely being used?",
+    "choice1": "DNS Cache Poisoning",
+    "choice2": "DNS Tunneling",
+    "choice3": "Domain Hijacking",
+    "choice4": "Fast Flux DNS",
+    "answer": 2,
+    "answerText": "DNS tunneling encapsulates data within DNS queries and responses to bypass firewalls and exfiltrate data."
+  },
+  {
+    "question": "An organization is developing a disaster recovery plan and needs to determine the maximum acceptable amount of data loss they can tolerate during an incident, measured in time. What is this metric called?",
+    "choice1": "Recovery Time Objective (RTO)",
+    "choice2": "Recovery Point Objective (RPO)",
+    "choice3": "Mean Time to Recovery (MTTR)",
+    "choice4": "Maximum Tolerable Downtime (MTD)",
+    "answer": 2,
+    "answerText": "RPO defines the maximum acceptable amount of data loss measured in time, dictating how frequently backups must occur."
+  },
+  {
+    "question": "A forensic analyst is investigating a suspected insider threat. They need to analyze the volatile memory (RAM) of the suspect's workstation before it is powered down. Which of the following artifacts is most likely to be found in RAM but not on the hard drive?",
+    "choice1": "Browser history logs",
+    "choice2": "Recently saved documents",
+    "choice3": "Active network connections and running processes",
+    "choice4": "Deleted files in the recycle bin",
+    "answer": 3,
+    "answerText": "Volatile memory (RAM) contains real-time state information such as active network connections, running processes, and sometimes encryption keys."
+  },
+  {
+    "question": "An attacker wants to compromise a target organization by identifying the third-party vendors and suppliers the organization relies on, and then infiltrating those less secure partners to gain access to the primary target. What type of attack strategy is this?",
+    "choice1": "Supply Chain Attack",
+    "choice2": "Watering Hole Attack",
+    "choice3": "Whaling Attack",
+    "choice4": "Advanced Persistent Threat (APT)",
+    "answer": 1,
+    "answerText": "A supply chain attack targets less secure elements in an organization's supply network to compromise the primary target."
+  },
+  {
+    "question": "A web developer is implementing security headers to protect their application from clickjacking attacks. Which HTTP response header should they configure?",
+    "choice1": "Content-Security-Policy (CSP)",
+    "choice2": "Strict-Transport-Security (HSTS)",
+    "choice3": "X-Frame-Options",
+    "choice4": "X-Content-Type-Options",
+    "answer": 3,
+    "answerText": "The X-Frame-Options header protects against clickjacking by restricting whether a browser is allowed to render a page in a <frame>, <iframe>, or <object>."
+  },
+  {
+    "question": "An organization is implementing a Security Information and Event Management (SIEM) system. What is the primary function of the 'correlation engine' within the SIEM?",
+    "choice1": "To collect logs from various sources",
+    "choice2": "To store log data securely for compliance",
+    "choice3": "To analyze and link related events from multiple sources to identify complex threats",
+    "choice4": "To automatically block malicious IP addresses",
+    "answer": 3,
+    "answerText": "The correlation engine connects disparate events across the network to identify patterns indicative of a coordinated attack."
+  },
+  {
+    "question": "A penetration tester successfully gains access to a Windows domain environment as a standard user. They manage to extract the NTLM hash of the Domain Administrator's password and use it to authenticate to other servers without cracking the hash. What technique is this?",
+    "choice1": "Kerberoasting",
+    "choice2": "Pass-the-Hash",
+    "choice3": "Golden Ticket Attack",
+    "choice4": "Silver Ticket Attack",
+    "answer": 2,
+    "answerText": "Pass-the-Hash allows an attacker to authenticate to a remote server or service by using the underlying NTLM hash of a user's password, rather than the plaintext password."
+  },
+  {
+    "question": "To protect sensitive intellectual property, a company implements a policy that requires all code changes to be reviewed and approved by at least two different senior developers before being merged into the production branch. This is an example of:",
+    "choice1": "Mandatory Access Control (MAC)",
+    "choice2": "Separation of Duties",
+    "choice3": "Job Rotation",
+    "choice4": "Dual Control",
+    "answer": 4,
+    "answerText": "Dual control requires the simultaneous or sequential action of two or more individuals to complete a critical task."
+  },
+  {
+    "question": "An incident response team is dealing with a severe ransomware infection that has spread across the entire corporate network. The primary focus is to ensure that business operations can resume as quickly as possible. Which phase of the incident response lifecycle does this focus on?",
+    "choice1": "Containment",
+    "choice2": "Eradication",
+    "choice3": "Recovery",
+    "choice4": "Lessons Learned",
+    "answer": 3,
+    "answerText": "Recovery involves restoring systems to normal operation, confirming they are functioning correctly, and remediating vulnerabilities."
+  },
+  {
+    "question": "A security architect is designing a wireless network for a highly sensitive facility. They need the strongest available encryption standard that replaces pre-shared keys with individualized encryption for each user and device. Which standard should they choose?",
+    "choice1": "WEP",
+    "choice2": "WPA2-Personal",
+    "choice3": "WPA2-Enterprise",
+    "choice4": "WPA3-Enterprise",
+    "answer": 4,
+    "answerText": "WPA3-Enterprise is the most secure current wireless standard, offering 192-bit encryption and individualized authentication via 802.1X/RADIUS."
+  },
+  {
+    "question": "An attacker discovers a previously unknown vulnerability in a popular web server software and exploits it to gain remote code execution before the vendor is aware or has released a patch. This is known as a:",
+    "choice1": "Zero-Day Exploit",
+    "choice2": "Known Vulnerability Exploit",
+    "choice3": "Logic Bomb",
+    "choice4": "Remote Access Trojan (RAT)",
+    "answer": 1,
+    "answerText": "A zero-day exploit attacks a vulnerability that is unknown to the vendor and for which no patch is currently available."
+  },
+  {
+    "question": "A cloud architect is configuring access controls for a new AWS environment. They assign policies to specific IAM roles rather than directly to users, and users assume those roles only when necessary. What principle does this enforce?",
+    "choice1": "Discretionary Access Control (DAC)",
+    "choice2": "Role-Based Access Control (RBAC) and Least Privilege",
+    "choice3": "Mandatory Access Control (MAC)",
+    "choice4": "Attribute-Based Access Control (ABAC)",
+    "answer": 2,
+    "answerText": "Assigning permissions to roles and having users assume those roles enforces RBAC and ensures they operate with the least privilege necessary."
+  },
+  {
+    "question": "During a malware analysis, an analyst finds that the malicious binary actively monitors the system for debugger tools (like OllyDbg or x64dbg) and alters its execution path or terminates if one is detected. This behavior is an example of:",
+    "choice1": "Anti-Debugging Techniques",
+    "choice2": "Obfuscation",
+    "choice3": "Polymorphism",
+    "choice4": "Rootkit Functionality",
+    "answer": 1,
+    "answerText": "Anti-debugging techniques are used by malware authors to hinder reverse engineering and dynamic analysis."
+  },
+  {
+    "question": "An organization wants to verify that their implemented security controls are effective against advanced threats. They hire an external team to emulate the tactics, techniques, and procedures (TTPs) of real-world adversaries in a full-scope simulated attack. This activity is called:",
+    "choice1": "Vulnerability Scanning",
+    "choice2": "Penetration Testing",
+    "choice3": "Red Teaming",
+    "choice4": "Threat Modeling",
+    "answer": 3,
+    "answerText": "Red Teaming is a comprehensive, objective-based simulation of real-world adversary attacks to test the organization's detection and response capabilities."
+  },
+  {
+    "question": "To ensure secure communication between microservices within a Kubernetes cluster, an organization deploys an infrastructure layer that handles service-to-service communication, often using mutual TLS (mTLS). What is this architectural pattern called?",
+    "choice1": "API Gateway",
+    "choice2": "Service Mesh",
+    "choice3": "Load Balancer",
+    "choice4": "Virtual Private Cloud (VPC)",
+    "answer": 2,
+    "answerText": "A Service Mesh provides a dedicated infrastructure layer for managing service-to-service communication, including security features like mTLS."
+  },
+  {
+    "question": "A forensic investigator is analyzing a suspect's computer. To preserve the evidentiary value of the data, what is the most critical first step before conducting any analysis on the original hard drive?",
+    "choice1": "Review the browser history",
+    "choice2": "Run antivirus software",
+    "choice3": "Create a bit-stream (forensic) image of the drive",
+    "choice4": "Extract deleted files using recovery tools",
+    "answer": 3,
+    "answerText": "Creating a forensic image ensures the original evidence remains unaltered while analysis is performed on the copy."
+  },
+  {
+    "question": "An attacker modifies the contents of a compiled binary file (e.g., an executable) by finding specific instruction sequences and replacing them with alternative, functionally equivalent instructions to evade signature-based antivirus detection. What technique is this?",
+    "choice1": "Packing",
+    "choice2": "Encryption",
+    "choice3": "Polymorphism",
+    "choice4": "Metamorphism",
+    "answer": 4,
+    "answerText": "Metamorphism involves rewriting the code completely so it appears different structurally while maintaining the same functionality, making signature detection extremely difficult."
+  },
+  {
+    "question": "A security analyst is reviewing a risk assessment report. A critical vulnerability was found in a legacy system that cannot be patched. The cost of upgrading the system is estimated at $500,000, while the Annualized Loss Expectancy (ALE) from the vulnerability is calculated at $10,000. Based on cost-benefit analysis, what is the most logical risk response?",
+    "choice1": "Mitigate the risk by upgrading the system",
+    "choice2": "Avoid the risk by shutting down the system immediately",
+    "choice3": "Accept the risk",
+    "choice4": "Transfer the risk to a third-party vendor",
+    "answer": 3,
+    "answerText": "If the cost of mitigation ($500k) far exceeds the expected loss ($10k), it is often more logical to accept the risk (or implement less costly compensating controls)."
+  }
+]

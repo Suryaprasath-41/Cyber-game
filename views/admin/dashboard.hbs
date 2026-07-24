@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/static/leaderboard.css">
+  <style>
+    body { background-color: #111; color: white; font-family: monospace; }
+    .admin-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border: 1px solid #333; text-align: left; }
+    th { background-color: #222; color: #00ffcc; }
+    .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+    input[type="text"] { padding: 10px; border-radius: 5px; border: none; flex-grow: 1; }
+    button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #00ffcc; color: black; cursor: pointer; font-weight: bold; }
+    button:hover { background-color: #00cc99; }
+    .btn-danger { background-color: #ff4444; color: white; }
+    .btn-danger:hover { background-color: #cc0000; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="header-bar">
+      <h1>Admin Dashboard</h1>
+      <div>
+        <a href="/admin/logout" style="color: #00ffcc;">Logout</a>
+      </div>
+    </div>
+
+    <div class="controls">
+      <form action="/admin/dashboard" method="GET" style="display: flex; gap: 10px; flex-grow: 1;">
+        <input type="text" name="search" placeholder="Search Roll Number or Name..." value="{{search}}">
+        <button type="submit">Search</button>
+      </form>
+      
+      <form action="/admin/toggle-competition" method="POST">
+        <button type="submit" class="{{#if competitionOn}}btn-danger{{/if}}">
+          {{#if competitionOn}}Close Competition{{else}}Open Competition{{/if}}
+        </button>
+      </form>
+      
+      <a href="/admin/export">
+        <button type="button">Export CSV</button>
+      </a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Roll Number</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Accuracy</th>
+          <th>Time</th>
+          <th>Weighted Score</th>
+          <th>Section</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each scores}}
+        <tr>
+          <td>{{this.rollNumber}}</td>
+          <td>{{this.username}}</td>
+          <td>{{this.score}}</td>
+          <td>{{this.accuracy}}%</td>
+          <td>{{this.time}}s</td>
+          <td><strong>{{this.weightedScore}}</strong></td>
+          <td>{{this.currentSection}}</td>
+          <td>{{this.completionStatus}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

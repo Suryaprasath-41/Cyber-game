@@ -1,0 +1,29 @@
+[
+  {
+    "question": "Employees of one of the IT giants are not able to access files on their network and the company has received a random call demanding for 1 million USD in exchange of the company’s data. What could possibly be happened with the company’s network?",
+    "choice1": "Brute Force attack",
+    "choice2": "Session Hijacking",
+    "choice3": "Ransomware attack",
+    "choice4": "Man-in-the-middle attack",
+    "answer": 3,
+    "answerText": "Ransomware attack"
+  },
+  {
+    "question": "As an organization, what measures can be taken to minimize the damage that can be caused in case of a ransomware attack?",
+    "choice1": "Encrypt as much network as possible",
+    "choice2": "Keep network in one single segment",
+    "choice3": "Divide organization network into multiple segments",
+    "choice4": "Both A and C",
+    "answer": 4,
+    "answerText": "Both A and C"
+  },
+  {
+    "question": "Which of the following are possible instances which can increase the chances of ransomware attack?",
+    "choice1": "Opening or closing a pop-up note on a web browser",
+    "choice2": "Clicking a legitimate advertising site",
+    "choice3": "Opening email attachments or downloading a ZIP file through email",
+    "choice4": "All of the above",
+    "answer": 4,
+    "answerText": "All of the above"
+  }
+]

@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: rgb(16, 16, 16);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.choice-container {
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  border: 0.1rem solid rgba(24, 180, 86, 0.5);
+  background-color: rgb(0, 0, 0);
+  border-radius: 1rem;
+  color: rgb(252, 252, 252);
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+
+}
+
+.choice-prefix {
+  padding: 1.5rem 2.5rem;
+  background-color: #13b466e2;
+  color: white;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.choice-text {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.correct {
+  background-color: #28a745;
+}
+
+.incorrect {
+  background-color: #dc3545;
+}
+
+/* HUD */
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hud-prefix {
+  text-align: center;
+  font-size: 2rem;
+  color: #6128dc;
+}
+
+.hud-main-text {
+  text-align: center;
+}
+
+#progressBar {
+  width: 40rem;
+  height: 4rem;
+  border: 0.3rem solid #6128dc;
+  margin-top: 1.5rem;
+  border-radius: 3rem;
+}
+
+#progressBarFull {
+  height: 3.4rem;
+  background-color: #02a557;
+  width: 0%;
+  border-radius: 2rem;
+}
+
+/* -------------------------------------------------- */
+
+
+
+
+.timer span>h2 {
+  background-image: linear-gradient(120deg, #25a654 0%, #369fd3 100%);
+  color: #7c45f2;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+:root {
+  background-color: #ecf5ff;
+  font-size: 62.5%;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 5.4rem;
+  color: #06c669;
+  margin-bottom: 5rem;
+}
+
+h1>span {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+/* Game */
+#renderer {
+  position: absolute;
+  z-index: 50;
+}
+
+.container {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  display: flex;
+  max-width: 80rem;
+  padding: 2rem;
+  left: 50vw;
+  transform: translateX(-50%) scale(0.8, 0.8);
+}
+
+#lostMessage {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 200;
+  position: absolute;
+  left: 50vw;
+  top: 10vh;
+  transform: translateX(-50%);
+}
+
+#lostMessage>#message {
+  color: red;
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+#lostMessage>#postScore {
+  color: lightsalmon;
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+#nextButton {
+  cursor: pointer;
+  padding: 12px;
+  background-color: darkblue;
+  color: white;
+  font-size: 32px;
+  border-radius: 3rem;
+  margin-bottom: 12px;
+}
+
+#restartButton {
+  cursor: pointer;
+  padding: 12px;
+  background-color: green;
+  color: white;
+  font-size: 32px;
+  border-radius: 3rem;
+}
+
+#restartButton:hover {
+  background-color: rgb(0, 66, 0);
+}
+
+#nextButton:hover {
+  background-color: rgb(0, 0, 46);
+}
+
+
+/* UTILITIES */
+
+.container>* {
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* BUTTONS */
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid #06c669;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #06c669;
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(24, 180, 86, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* FORMS */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin-bottom: 1rem;
+  width: 20rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  border: none;
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(24, 180, 86, 0.5);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+#question {
+  /* background color needs to be color gradient */
+  background: url("https://wallpapercave.com/wp/wp1933959.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  /* dim the color */
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0.25, 0.75);
+  font-family: "Roboto", sans-serif;
+  font-size: 2.5rem;
+  border-radius: 20px;
+
+
+}
+
+/* ------------------ Highscore ----------------------------------------------------------------*/
+
+#highScoresList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 4rem;
+}
+
+.high-score {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.high-score:hover {
+  transform: scale(1.025);
+}
+
+
+.heading {
+  font-size: 5vw;
+  text-shadow: 4px 4px 0px #35FF9E;
+  mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

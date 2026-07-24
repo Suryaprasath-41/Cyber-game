@@ -1,0 +1,94 @@
+{{> infoHeader}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+</head>
+
+<body class="h-screen overflow-auto overscroll-contain">
+  {{!-- <section class="bg-gray-900 text-white" style="height: 100vh;"> --}}
+    {{!-- section needs to cover entire page --}}
+    <section class="bg-gray-900 text-white h-full overflow-auto	overscroll-contain">
+      <div class="  overflow-auto	overscroll-contain">
+        <div class="mx-auto max-w-3xl text-center overflow-auto overscroll-contain">
+          <br><br><br>
+          <h2
+            class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl h-full overflow-auto ">
+            {{name}}
+
+            <span class="sm:block"> Module </span>
+          </h2>
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-left">
+            <br> <br>
+            Session hijacking is an attack that uses a valid computer session used by a user to access information
+            services that are not authorized by the user. For example, suppose a user makes a purchase online and pays a
+            bill on the website. The attacker may lock the session of the website, and impersonate the user to operate
+            after the user completes the session of the website. They will pretend to be users to deceive the website.
+
+            <br><br>
+
+          </p>
+
+
+          <br><br>
+          <h4 class="font-medium leading-tight text-4xl mt-0 mb-2 text-blue-600">
+            Types of Session Hijacking
+          </h4>
+          <br><br>
+          </p>
+
+
+
+          <h5 class="font-large leading-tight text-xl mt-0 mb-2 text-purple-600">1) Brute Force</h5>
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-left">
+            An attacker would simply guess the user's session ID and use it to hijack the session. Brute-force attacks
+            usually work on poorly secured websites that use short, easy-to-guess session keys.
+          </p>
+
+          <h5 class="font-large leading-tight text-xl mt-0 mb-2 text-purple-600">2) Cross-site scripting</h5>
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-left">
+            Attackers inject scripts into web pages. An attacker tricks a user's computer into running a web page that
+            causes your web browser to reveal your session key to the attacker so they can take over the session.
+            Because it appears to belong to the server, allowing an attacker to obtain a copy of the cookie or perform
+            other actions.
+          </p>
+
+          <h5 class="font-large leading-tight text-xl mt-0 mb-2 text-purple-600">3) Malware</h5>
+
+          <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-left justify-left">
+            An attacker can use browser hijacking to steal a browser's cookie file without the user's knowledge, and
+            then perform actions without the user's knowledge. An attacker can trick you into clicking a link that
+            installs malware on your device , thereby hijacking the session. Malware may investigate and perform
+            "session sniffing" to find sessions. The malware then grabs the session cookie and sends it to the
+            criminals, who can then get your session ID to take over your session.
+          </p>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+
+
+            <a href="/game/sessionhijacking">
+              <button class="cybr-btn">
+                Play
+                <span class="cybr-btn__glitch">Play_</span>
+              </button>
+            </a>
+
+            {{!-- INFO page --}}
+
+          </div>
+          <br><br><br>
+          <span class="hscroll-line"></span>
+        </div>
+      </div>
+    </section>
+
+</body>
+
+</html>

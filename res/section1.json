@@ -1,0 +1,182 @@
+[
+  {
+    "question": "An organization recently experienced a data breach where sensitive customer information was exposed. The investigation revealed that the database was accessible without authentication from the public internet. Which principle of the CIA triad was most directly violated?",
+    "choice1": "Confidentiality",
+    "choice2": "Integrity",
+    "choice3": "Availability",
+    "choice4": "Non-repudiation",
+    "answer": 1,
+    "answerText": "Confidentiality ensures that sensitive information is accessed only by authorized individuals."
+  },
+  {
+    "question": "A security analyst is reviewing network logs and notices a high volume of traffic originating from a single IP address attempting to access various ports on a critical internal server within a short timeframe. What type of activity does this most likely indicate?",
+    "choice1": "Distributed Denial of Service (DDoS)",
+    "choice2": "Port Scanning",
+    "choice3": "SQL Injection",
+    "choice4": "Man-in-the-Middle (MitM) Attack",
+    "answer": 2,
+    "answerText": "Port scanning involves probing a server or host for open ports to identify running services and potential vulnerabilities."
+  },
+  {
+    "question": "During a routine audit, an administrator discovers that several employees have been sharing their login credentials to expedite workflow. To mitigate this risk without hindering productivity, which access control model should the organization implement?",
+    "choice1": "Mandatory Access Control (MAC)",
+    "choice2": "Discretionary Access Control (DAC)",
+    "choice3": "Role-Based Access Control (RBAC)",
+    "choice4": "Attribute-Based Access Control (ABAC)",
+    "answer": 3,
+    "answerText": "RBAC assigns permissions based on an individual's role within the organization, simplifying access management."
+  },
+  {
+    "question": "A company wants to securely connect its remote workforce to the corporate network over the public internet. The solution must ensure data encryption and integrity. Which technology is best suited for this requirement?",
+    "choice1": "Virtual Private Network (VPN) with IPsec",
+    "choice2": "Secure Shell (SSH)",
+    "choice3": "File Transfer Protocol Secure (FTPS)",
+    "choice4": "Hypertext Transfer Protocol Secure (HTTPS)",
+    "answer": 1,
+    "answerText": "A VPN with IPsec provides secure, encrypted tunnels for remote access to corporate networks."
+  },
+  {
+    "question": "An employee receives an email purportedly from the IT department, instructing them to click a link and verify their account details due to a recent security upgrade. The email contains spelling errors and a generic greeting. What type of attack is this?",
+    "choice1": "Spear Phishing",
+    "choice2": "Whaling",
+    "choice3": "Phishing",
+    "choice4": "Vishing",
+    "answer": 3,
+    "answerText": "Phishing involves sending fraudulent communications that appear to come from a reputable source, often in bulk."
+  },
+  {
+    "question": "A system administrator needs to ensure that a downloaded software patch has not been tampered with and is exactly as the vendor provided. Which cryptographic technique should be used?",
+    "choice1": "Symmetric Encryption",
+    "choice2": "Asymmetric Encryption",
+    "choice3": "Hashing",
+    "choice4": "Steganography",
+    "answer": 3,
+    "answerText": "Hashing generates a unique fixed-size string (hash) from data, allowing verification of data integrity."
+  },
+  {
+    "question": "A web application allows users to upload profile pictures. A malicious user uploads a file named 'image.php.jpg' containing a PHP script, which the server executes. What vulnerability allowed this?",
+    "choice1": "Cross-Site Scripting (XSS)",
+    "choice2": "Unrestricted File Upload",
+    "choice3": "SQL Injection",
+    "choice4": "Cross-Site Request Forgery (CSRF)",
+    "answer": 2,
+    "answerText": "Unrestricted file upload vulnerabilities occur when an application fails to properly validate uploaded files, allowing execution of malicious scripts."
+  },
+  {
+    "question": "To enhance security, an organization decides to implement multi-factor authentication (MFA). They already use passwords. Which of the following would constitute a valid second factor?",
+    "choice1": "A PIN code",
+    "choice2": "A security question",
+    "choice3": "A fingerprint scan",
+    "choice4": "A longer password",
+    "answer": 3,
+    "answerText": "MFA requires factors from different categories (e.g., something you know, something you are). A fingerprint is 'something you are'."
+  },
+  {
+    "question": "A network engineer wants to separate the guest Wi-Fi network from the internal corporate network to prevent unauthorized access to internal resources. Which technology achieves this logically on the same physical switches?",
+    "choice1": "Virtual Local Area Network (VLAN)",
+    "choice2": "Subnetting",
+    "choice3": "Network Address Translation (NAT)",
+    "choice4": "Demilitarized Zone (DMZ)",
+    "answer": 1,
+    "answerText": "VLANs logically segment a network, isolating traffic between different groups on the same physical infrastructure."
+  },
+  {
+    "question": "A security analyst is tasked with identifying potential vulnerabilities in a web application without having access to its source code. What type of testing methodology is being employed?",
+    "choice1": "White-box testing",
+    "choice2": "Black-box testing",
+    "choice3": "Gray-box testing",
+    "choice4": "Static Application Security Testing (SAST)",
+    "answer": 2,
+    "answerText": "Black-box testing involves evaluating a system from the outside without prior knowledge of its internal structure or code."
+  },
+  {
+    "question": "During an incident response, the team isolates a compromised server from the network to prevent malware from spreading. Which phase of the incident response lifecycle does this action represent?",
+    "choice1": "Preparation",
+    "choice2": "Identification",
+    "choice3": "Containment",
+    "choice4": "Eradication",
+    "answer": 3,
+    "answerText": "Containment involves actions taken to limit the scope and magnitude of an incident, such as isolating affected systems."
+  },
+  {
+    "question": "An attacker intercepts communication between a client and a server, altering the data in transit without either party realizing it. Which type of attack is this?",
+    "choice1": "Eavesdropping",
+    "choice2": "Man-in-the-Middle (MitM)",
+    "choice3": "Replay Attack",
+    "choice4": "Session Hijacking",
+    "answer": 2,
+    "answerText": "A MitM attack involves an attacker secretly relaying and possibly altering communications between two parties."
+  },
+  {
+    "question": "An organization wants to monitor network traffic for suspicious patterns and known attack signatures, raising alerts when threats are detected. Which tool should they deploy?",
+    "choice1": "Intrusion Prevention System (IPS)",
+    "choice2": "Intrusion Detection System (IDS)",
+    "choice3": "Firewall",
+    "choice4": "Virtual Private Network (VPN)",
+    "answer": 2,
+    "answerText": "An IDS monitors network traffic for malicious activity and policy violations, generating alerts without actively blocking the traffic."
+  },
+  {
+    "question": "A company is disposing of old hard drives containing sensitive financial data. They want to ensure the data cannot be recovered under any circumstances. Which method is the most secure?",
+    "choice1": "Formatting the drives",
+    "choice2": "Deleting the partitions",
+    "choice3": "Degaussing or physical destruction",
+    "choice4": "Overwriting with zeros once",
+    "answer": 3,
+    "answerText": "Physical destruction or degaussing (disrupting the magnetic field) ensures the data is permanently unrecoverable."
+  },
+  {
+    "question": "A user repeatedly attempts to log in with an incorrect password, causing their account to lock out after five attempts. This is a mitigation against which type of attack?",
+    "choice1": "Dictionary Attack",
+    "choice2": "Brute Force Attack",
+    "choice3": "Rainbow Table Attack",
+    "choice4": "Phishing",
+    "answer": 2,
+    "answerText": "Account lockout policies are a primary defense against brute force attacks, which rely on numerous successive login attempts."
+  },
+  {
+    "question": "An application is designed to handle user inputs, but it fails to check the size of the input before processing it. An attacker inputs a string longer than the allocated memory space, causing the application to crash. What vulnerability is this?",
+    "choice1": "Integer Overflow",
+    "choice2": "Buffer Overflow",
+    "choice3": "Memory Leak",
+    "choice4": "Race Condition",
+    "answer": 2,
+    "answerText": "A buffer overflow occurs when more data is written to a block of memory (buffer) than it was allocated to hold."
+  },
+  {
+    "question": "To ensure that a message was sent by a specific individual and has not been altered, a digital signature is used. What cryptographic keys are involved in creating and verifying the signature?",
+    "choice1": "Sender's public key to sign, sender's private key to verify",
+    "choice2": "Sender's private key to sign, sender's public key to verify",
+    "choice3": "Receiver's private key to sign, receiver's public key to verify",
+    "choice4": "Receiver's public key to sign, receiver's private key to verify",
+    "answer": 2,
+    "answerText": "A digital signature is created using the sender's private key and verified using their corresponding public key."
+  },
+  {
+    "question": "A security policy requires that no single individual possesses enough authority to complete a critical task entirely on their own. Which security principle is being enforced?",
+    "choice1": "Least Privilege",
+    "choice2": "Separation of Duties",
+    "choice3": "Need to Know",
+    "choice4": "Defense in Depth",
+    "answer": 2,
+    "answerText": "Separation of duties requires more than one person to complete a task, preventing fraud and errors."
+  },
+  {
+    "question": "An attacker exploits a vulnerability in a web application to execute arbitrary SQL commands, gaining unauthorized access to the database. How could the developer have prevented this?",
+    "choice1": "Using HTTPS",
+    "choice2": "Implementing parameterized queries (Prepared Statements)",
+    "choice3": "Encrypting the database",
+    "choice4": "Hiding the database IP address",
+    "answer": 2,
+    "answerText": "Parameterized queries separate the SQL code from the user input, neutralizing SQL injection attacks."
+  },
+  {
+    "question": "An organization relies heavily on cloud services. During a risk assessment, they identify that their cloud provider might experience an outage. They decide to accept the risk because the cost of implementing a multi-cloud strategy outweighs the potential loss. What risk management strategy is this?",
+    "choice1": "Risk Avoidance",
+    "choice2": "Risk Mitigation",
+    "choice3": "Risk Transference",
+    "choice4": "Risk Acceptance",
+    "answer": 4,
+    "answerText": "Risk acceptance is the conscious decision to acknowledge a risk and not take any action to mitigate or transfer it, usually due to cost-benefit analysis."
+  }
+]

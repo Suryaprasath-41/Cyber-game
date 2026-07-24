@@ -1,0 +1,182 @@
+[
+  {
+    "question": "An organization is migrating its infrastructure to the cloud using an Infrastructure as a Service (IaaS) model. According to the shared responsibility model, which of the following is solely the organization's responsibility?",
+    "choice1": "Physical security of the data center",
+    "choice2": "Network infrastructure maintenance",
+    "choice3": "Hypervisor patching",
+    "choice4": "Operating system configuration and updates",
+    "answer": 4,
+    "answerText": "In IaaS, the provider manages the underlying infrastructure (hypervisor, physical security), while the customer manages the OS, applications, and data."
+  },
+  {
+    "question": "A security analyst is reviewing a firewall rule set and finds the following rule at the very bottom: 'Allow Any Any'. Why is this rule considered a major security risk?",
+    "choice1": "It prevents the firewall from logging traffic.",
+    "choice2": "It violates the principle of implicit deny.",
+    "choice3": "It causes network congestion.",
+    "choice4": "It encrypts all outbound traffic.",
+    "answer": 2,
+    "answerText": "An 'Allow Any Any' rule permits all traffic, negating the purpose of the firewall and violating the implicit deny principle."
+  },
+  {
+    "question": "A company requires employees to connect their personal devices (BYOD) to a dedicated Wi-Fi network that only provides internet access and has no route to internal corporate servers. What network design concept is this?",
+    "choice1": "VLAN Trunking",
+    "choice2": "Network Segmentation",
+    "choice3": "Port Mirroring",
+    "choice4": "Link Aggregation",
+    "answer": 2,
+    "answerText": "Network segmentation logically or physically separates networks to limit access and contain potential breaches."
+  },
+  {
+    "question": "During a malware outbreak, the incident response team discovers that the malware spreads by exploiting a vulnerability in the Server Message Block (SMB) protocol. Which malware characteristic describes this self-replicating behavior across a network?",
+    "choice1": "Virus",
+    "choice2": "Trojan",
+    "choice3": "Worm",
+    "choice4": "Rootkit",
+    "answer": 3,
+    "answerText": "A worm is a standalone malware computer program that replicates itself in order to spread to other computers, often over a network."
+  },
+  {
+    "question": "To securely manage cryptographic keys, an organization deploys a dedicated hardware appliance that provides secure key storage and cryptographic operations. What is this device called?",
+    "choice1": "Trusted Platform Module (TPM)",
+    "choice2": "Hardware Security Module (HSM)",
+    "choice3": "Network Attached Storage (NAS)",
+    "choice4": "Key Distribution Center (KDC)",
+    "answer": 2,
+    "answerText": "An HSM is a physical computing device that safeguards and manages digital keys for strong authentication and provides cryptoprocessing."
+  },
+  {
+    "question": "An attacker sends a forged TCP SYN packet with the source IP address of the target server, causing the server to send SYN-ACK packets to itself, eventually leading to a denial of service. What type of attack is this?",
+    "choice1": "Smurf Attack",
+    "choice2": "LAND Attack",
+    "choice3": "SYN Flood",
+    "choice4": "Ping of Death",
+    "answer": 2,
+    "answerText": "A LAND (Local Area Network Denial) attack involves sending a spoofed TCP SYN packet where the source and destination IPs are the target's IP."
+  },
+  {
+    "question": "A software development team uses a CI/CD pipeline. They integrate a tool that analyzes their source code for security vulnerabilities before the code is compiled. What type of tool is this?",
+    "choice1": "Dynamic Application Security Testing (DAST)",
+    "choice2": "Interactive Application Security Testing (IAST)",
+    "choice3": "Static Application Security Testing (SAST)",
+    "choice4": "Software Composition Analysis (SCA)",
+    "answer": 3,
+    "answerText": "SAST analyzes source code, bytecode, or binaries without executing the application to identify vulnerabilities."
+  },
+  {
+    "question": "An organization wants to ensure that data stored on employee laptops remains secure even if the device is lost or stolen. Which technology should they implement?",
+    "choice1": "File-Level Encryption",
+    "choice2": "Full Disk Encryption (FDE)",
+    "choice3": "Data Loss Prevention (DLP)",
+    "choice4": "Virtual Private Network (VPN)",
+    "answer": 2,
+    "answerText": "FDE encrypts the entire hard drive, ensuring all data is protected at rest if the device is lost."
+  },
+  {
+    "question": "A security engineer is analyzing a network packet capture (PCAP) and observes a sequence of TCP packets: SYN, SYN-ACK, ACK. What does this sequence represent?",
+    "choice1": "A teardown of a TCP connection",
+    "choice2": "A UDP data transfer",
+    "choice3": "The TCP three-way handshake",
+    "choice4": "An ICMP Echo Request/Reply",
+    "answer": 3,
+    "answerText": "The TCP three-way handshake (SYN, SYN-ACK, ACK) is the method used by TCP to establish a connection between nodes."
+  },
+  {
+    "question": "An attacker calls a company's help desk, claiming to be the CEO who forgot their password and urgently needs access to an important document. The help desk resets the password without verifying the caller's identity. This is an example of:",
+    "choice1": "Baiting",
+    "choice2": "Tailgating",
+    "choice3": "Social Engineering",
+    "choice4": "Phishing",
+    "answer": 3,
+    "answerText": "Social engineering involves manipulating people into breaking normal security procedures to gain unauthorized access."
+  },
+  {
+    "question": "To achieve high availability and fault tolerance for a critical database, a company implements a cluster where all nodes actively process transactions simultaneously. What type of clustering is this?",
+    "choice1": "Active-Passive",
+    "choice2": "Active-Active",
+    "choice3": "Cold Standby",
+    "choice4": "Warm Site",
+    "answer": 2,
+    "answerText": "In an Active-Active cluster, all nodes are actively processing requests, balancing the load and providing redundancy."
+  },
+  {
+    "question": "A security analyst needs to extract files hidden within an image file. What technique is the attacker using to hide the files, and what process is needed to extract them?",
+    "choice1": "Encryption / Decryption",
+    "choice2": "Hashing / Cracking",
+    "choice3": "Steganography / Steganalysis",
+    "choice4": "Obfuscation / Deobfuscation",
+    "answer": 3,
+    "answerText": "Steganography is the practice of hiding a secret message or file within another file. Steganalysis is the process of detecting and extracting it."
+  },
+  {
+    "question": "An organization requires that all outgoing emails containing sensitive keywords (e.g., 'Confidential', 'SSN') be automatically blocked from leaving the network. Which technology provides this capability?",
+    "choice1": "Intrusion Detection System (IDS)",
+    "choice2": "Data Loss Prevention (DLP)",
+    "choice3": "Spam Filter",
+    "choice4": "Web Application Firewall (WAF)",
+    "answer": 2,
+    "answerText": "DLP systems monitor and control data transfers, preventing sensitive information from leaving the organization."
+  },
+  {
+    "question": "A penetration tester wants to gather information about a target organization's infrastructure by querying public DNS records, WHOIS databases, and search engines without interacting directly with the target's servers. What phase of the kill chain is this?",
+    "choice1": "Weaponization",
+    "choice2": "Exploitation",
+    "choice3": "Active Reconnaissance",
+    "choice4": "Passive Reconnaissance",
+    "answer": 4,
+    "answerText": "Passive reconnaissance involves gathering information about a target using publicly available resources without direct interaction."
+  },
+  {
+    "question": "A company uses a centralized authentication server that supports the 802.1X standard to control network access for wired and wireless devices. Which protocol is most likely being used for this authentication process?",
+    "choice1": "RADIUS",
+    "choice2": "TACACS+",
+    "choice3": "Kerberos",
+    "choice4": "LDAP",
+    "answer": 1,
+    "answerText": "RADIUS (Remote Authentication Dial-In User Service) is a networking protocol that provides centralized AAA management and is commonly used with 802.1X."
+  },
+  {
+    "question": "During a forensic investigation, an analyst creates a bit-by-bit copy of a compromised hard drive and calculates a cryptographic hash of the image. Why is the hash calculated?",
+    "choice1": "To compress the image size",
+    "choice2": "To encrypt the evidence",
+    "choice3": "To ensure the integrity of the evidence",
+    "choice4": "To identify malware signatures",
+    "answer": 3,
+    "answerText": "Calculating a hash of the forensic image establishes a baseline, ensuring that the evidence is not altered during the investigation."
+  },
+  {
+    "question": "An attacker exploits a vulnerability in a web application by forcing a user's browser to execute an unwanted action on a site where the user is currently authenticated. What type of attack is this?",
+    "choice1": "Cross-Site Scripting (XSS)",
+    "choice2": "Cross-Site Request Forgery (CSRF)",
+    "choice3": "Server-Side Request Forgery (SSRF)",
+    "choice4": "Clickjacking",
+    "answer": 2,
+    "answerText": "CSRF tricks an authenticated user into executing unwanted actions on a web application without their knowledge."
+  },
+  {
+    "question": "To defend against CSRF attacks, which of the following is the most effective mitigation strategy?",
+    "choice1": "Implementing anti-CSRF tokens",
+    "choice2": "Using HTTPS for all traffic",
+    "choice3": "Sanitizing user input",
+    "choice4": "Setting the HttpOnly flag on cookies",
+    "answer": 1,
+    "answerText": "Anti-CSRF tokens are unique, unpredictable values required for state-changing requests, preventing attackers from forging valid requests."
+  },
+  {
+    "question": "A system administrator implements a policy where users are granted only the permissions absolutely necessary to perform their job functions. Which security principle is being applied?",
+    "choice1": "Separation of Duties",
+    "choice2": "Least Privilege",
+    "choice3": "Defense in Depth",
+    "choice4": "Implicit Deny",
+    "answer": 2,
+    "answerText": "The Principle of Least Privilege dictates that users should have only the minimum access rights necessary to perform their duties."
+  },
+  {
+    "question": "A security team deploys a decoy server designed to mimic a vulnerable internal system to attract attackers and study their methods. What is this concept called?",
+    "choice1": "DMZ",
+    "choice2": "Honeypot",
+    "choice3": "Sinkhole",
+    "choice4": "Air Gap",
+    "answer": 2,
+    "answerText": "A honeypot is a decoy system designed to lure cyberattackers, allowing security teams to monitor their activity and gather threat intelligence."
+  }
+]

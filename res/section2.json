@@ -1,0 +1,182 @@
+[
+  {
+    "question": "A malware analyst is examining a suspicious executable. They run the file in an isolated environment to observe its behavior, such as file system changes and network connections. What type of analysis is this?",
+    "choice1": "Static Analysis",
+    "choice2": "Dynamic Analysis",
+    "choice3": "Heuristic Analysis",
+    "choice4": "Code Review",
+    "answer": 2,
+    "answerText": "Dynamic analysis involves executing malware in a controlled environment to observe its behavior in real-time."
+  },
+  {
+    "question": "An attacker uses a compromised host within a corporate network to scan for vulnerabilities on other internal servers that are not exposed to the internet. What technique is the attacker using?",
+    "choice1": "Pivoting",
+    "choice2": "Spoofing",
+    "choice3": "Phishing",
+    "choice4": "Social Engineering",
+    "answer": 1,
+    "answerText": "Pivoting is a technique where an attacker uses a compromised system to attack other systems on the same network."
+  },
+  {
+    "question": "A web server's logs indicate multiple requests containing strings like '<script>alert(\"XSS\")</script>' submitted via a contact form. Which vulnerability is the attacker attempting to exploit?",
+    "choice1": "SQL Injection (SQLi)",
+    "choice2": "Cross-Site Scripting (XSS)",
+    "choice3": "Cross-Site Request Forgery (CSRF)",
+    "choice4": "Command Injection",
+    "answer": 2,
+    "answerText": "XSS vulnerabilities allow attackers to inject malicious scripts into web pages viewed by other users."
+  },
+  {
+    "question": "To securely manage configuration files that contain API keys and database passwords, a development team should utilize which of the following?",
+    "choice1": "A public version control repository",
+    "choice2": "Hardcoded variables in the source code",
+    "choice3": "A secret management system (e.g., HashiCorp Vault)",
+    "choice4": "Plaintext files on a shared network drive",
+    "answer": 3,
+    "answerText": "Secret management systems securely store and control access to tokens, passwords, certificates, and API keys."
+  },
+  {
+    "question": "A company wants to implement a security mechanism that automatically blocks network traffic matching known malicious signatures. Which device is appropriate?",
+    "choice1": "Intrusion Detection System (IDS)",
+    "choice2": "Intrusion Prevention System (IPS)",
+    "choice3": "Load Balancer",
+    "choice4": "Router",
+    "answer": 2,
+    "answerText": "An IPS actively analyzes network traffic and blocks or prevents threats based on signatures or anomalies."
+  },
+  {
+    "question": "An attacker captures the hash of a user's password from a compromised database and uses a precomputed table of hashes to quickly find the plaintext password. What type of attack is this?",
+    "choice1": "Brute Force Attack",
+    "choice2": "Dictionary Attack",
+    "choice3": "Rainbow Table Attack",
+    "choice4": "Pass-the-Hash Attack",
+    "answer": 3,
+    "answerText": "Rainbow table attacks use precomputed tables of reversed cryptographic hashes to crack passwords rapidly."
+  },
+  {
+    "question": "To mitigate the risk of Rainbow Table attacks, an organization should implement which of the following techniques when storing passwords?",
+    "choice1": "Encryption",
+    "choice2": "Salting",
+    "choice3": "Encoding",
+    "choice4": "Obfuscation",
+    "answer": 2,
+    "answerText": "Salting adds random data to the input of a hash function, ensuring unique hashes even for identical passwords, rendering precomputed tables ineffective."
+  },
+  {
+    "question": "During a penetration test, the tester exploits a vulnerability to gain access to an application. They then exploit a secondary vulnerability in the operating system kernel to gain administrative rights. What is this secondary action called?",
+    "choice1": "Privilege Escalation",
+    "choice2": "Lateral Movement",
+    "choice3": "Data Exfiltration",
+    "choice4": "Persistence",
+    "answer": 1,
+    "answerText": "Privilege escalation is the act of exploiting a flaw to gain elevated access to resources normally protected from an application or user."
+  },
+  {
+    "question": "An organization is configuring a firewall and wants to ensure that only specifically permitted traffic is allowed, denying all other traffic by default. Which principle is being applied?",
+    "choice1": "Implicit Deny",
+    "choice2": "Least Privilege",
+    "choice3": "Defense in Depth",
+    "choice4": "Fail-Safe Defaults",
+    "answer": 1,
+    "answerText": "Implicit deny is a firewall principle stating that unless traffic is explicitly permitted by a rule, it is denied."
+  },
+  {
+    "question": "A security team notices that an attacker has established a persistent connection to an internal server using a custom protocol over port 443, bypassing traditional HTTP inspection. What type of malware is likely in use?",
+    "choice1": "Ransomware",
+    "choice2": "Remote Access Trojan (RAT)",
+    "choice3": "Keylogger",
+    "choice4": "Logic Bomb",
+    "answer": 2,
+    "answerText": "RATs allow attackers to maintain persistent, covert control over a compromised system, often disguising traffic on common ports like 443."
+  },
+  {
+    "question": "An attacker creates a fake wireless access point with the same SSID as a legitimate corporate network in a coffee shop, tricking employees into connecting. What is this attack called?",
+    "choice1": "Evil Twin",
+    "choice2": "Rogue AP",
+    "choice3": "War Driving",
+    "choice4": "MAC Spoofing",
+    "answer": 1,
+    "answerText": "An Evil Twin is a fraudulent Wi-Fi access point that appears to be legitimate but is set up to eavesdrop on wireless communications."
+  },
+  {
+    "question": "A company is implementing a Public Key Infrastructure (PKI). What is the primary purpose of a Certificate Revocation List (CRL)?",
+    "choice1": "To issue new digital certificates",
+    "choice2": "To store private keys securely",
+    "choice3": "To list certificates that are no longer valid",
+    "choice4": "To verify the identity of the Certificate Authority (CA)",
+    "answer": 3,
+    "answerText": "A CRL is a list of digital certificates that have been revoked by the issuing CA prior to their scheduled expiration date."
+  },
+  {
+    "question": "An organization requires its employees to use a smart card and a PIN to access secure areas. This is an example of which type of authentication?",
+    "choice1": "Single-Factor Authentication",
+    "choice2": "Two-Factor Authentication (2FA)",
+    "choice3": "Biometric Authentication",
+    "choice4": "Context-Aware Authentication",
+    "answer": 2,
+    "answerText": "2FA requires two different types of credentials: something you have (smart card) and something you know (PIN)."
+  },
+  {
+    "question": "A security analyst is reviewing source code and identifies a section that executes only on a specific date, intending to delete critical files. What type of malicious code is this?",
+    "choice1": "Worm",
+    "choice2": "Trojan Horse",
+    "choice3": "Logic Bomb",
+    "choice4": "Rootkit",
+    "answer": 3,
+    "answerText": "A logic bomb is malicious code inserted into software that lies dormant until a specific condition (like a date) triggers it."
+  },
+  {
+    "question": "To protect against DNS spoofing attacks, an organization should implement which of the following protocols?",
+    "choice1": "DNSSEC",
+    "choice2": "HTTPS",
+    "choice3": "IPsec",
+    "choice4": "TLS",
+    "answer": 1,
+    "answerText": "DNSSEC (Domain Name System Security Extensions) adds cryptographic signatures to DNS records to ensure their authenticity and integrity."
+  },
+  {
+    "question": "A security engineer configures a system to log all access attempts, both successful and failed. This practice primarily supports which security concept?",
+    "choice1": "Authentication",
+    "choice2": "Authorization",
+    "choice3": "Accounting (Non-repudiation)",
+    "choice4": "Availability",
+    "answer": 3,
+    "answerText": "Accounting (often associated with logging and auditing) provides non-repudiation, ensuring actions can be traced to a specific user."
+  },
+  {
+    "question": "An application uses a session cookie to maintain user state. An attacker intercepts this cookie over an unencrypted Wi-Fi network and uses it to access the user's account. What is this attack called?",
+    "choice1": "Cross-Site Scripting (XSS)",
+    "choice2": "Session Hijacking",
+    "choice3": "Cross-Site Request Forgery (CSRF)",
+    "choice4": "SQL Injection",
+    "answer": 2,
+    "answerText": "Session hijacking (or session riding) involves compromising a valid session token to gain unauthorized access to a system."
+  },
+  {
+    "question": "To prevent Session Hijacking over unencrypted networks, what flag should developers ensure is set on session cookies?",
+    "choice1": "HttpOnly",
+    "choice2": "Secure",
+    "choice3": "SameSite",
+    "choice4": "Domain",
+    "answer": 2,
+    "answerText": "The 'Secure' flag ensures the cookie is only transmitted over encrypted (HTTPS) connections, preventing interception on unencrypted networks."
+  },
+  {
+    "question": "A company is experiencing a targeted attack where an advanced persistent threat (APT) is attempting to steal intellectual property slowly over several months. Which characteristic best describes an APT?",
+    "choice1": "Automated and untargeted",
+    "choice2": "Short-term and highly visible",
+    "choice3": "Resourced, prolonged, and specific",
+    "choice4": "Relies solely on known vulnerabilities",
+    "answer": 3,
+    "answerText": "APTs are sophisticated, well-resourced adversaries that establish long-term, stealthy access to targeted networks."
+  },
+  {
+    "question": "During a risk assessment, a security manager assigns a monetary value to an asset and estimates the probability of a specific threat exploiting a vulnerability. This approach is known as:",
+    "choice1": "Qualitative Risk Assessment",
+    "choice2": "Quantitative Risk Assessment",
+    "choice3": "Threat Modeling",
+    "choice4": "Vulnerability Scanning",
+    "answer": 2,
+    "answerText": "Quantitative risk assessment involves assigning objective numerical or monetary values to components of the risk assessment."
+  }
+]

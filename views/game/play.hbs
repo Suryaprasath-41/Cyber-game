@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>3xploit Competition</title>
+  <link rel="stylesheet" href="/static/{{style}}">
+  <style>
+    /* Additional HUD styling to fit the new metrics without breaking old layout */
+    .extended-hud {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      color: #00ffcc;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .extended-hud div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hud-label {
+      font-size: 10px;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  {{>userprofile}}
+  <i id="levelNum" style="display: none;">{{currentSection}}</i>
+  <i id="serverScore" style="display: none;">{{currentScore}}</i>
+  
+  <div id="loading"
+    style="z-index: 150;position: absolute;width: 100vw;height: 100vh;background-color: burlywood;justify-content: center;display: flex;align-items: center;">
+    <h2>Loading Environment...</h2>
+  </div>
+  
+  <div id="lostMessage">
+    <span id="message">Section Failed</span>
+    <span id="postScore">Score: 0</span>
+    <span id="nextButton">Retry Section</span>
+    <span id="restartButton">Restart</span>
+  </div>
+
+  <div class="container" id="container">
+    <div id="game" class="justify-center flex-column">
+      
+      <!-- EXTENDED HUD TOP BAR -->
+      <div class="extended-hud">
+        <div><span class="hud-label">Player</span> <span>{{username}} ({{rollNumber}})</span></div>
+        <div><span class="hud-label">Section</span> <span id="dispSection">{{currentSection}}</span></div>
+        <div><span class="hud-label">Accuracy</span> <span id="dispAccuracy">0%</span></div>
+        <div><span class="hud-label">Correct</span> <span id="dispCorrect">0</span></div>
+        <div><span class="hud-label">Wrong</span> <span id="dispWrong">0</span></div>
+        <div><span class="hud-label">Weighted Score</span> <span id="dispWeighted">0</span></div>
+      </div>
+
+      <h2 id="progressText" class="heading">Question 1/20</h2>
+
+      <div id="hud">
+        <div class="timer">
+          <span><h2 id="timer">60</h2></span>
+          <div id="progressBar">
+            <div id="progressBarFull"></div>
+          </div>
+        </div>
+        <div id="hud-item">
+          <p class="hud-prefix">Lives</p>
+          <h1 class="hud-main-text" id="attempts">3</h1>
+        </div>
+        <div id="hud-item">
+          <p class="hud-prefix">Score</p>
+          <h1 class="hud-main-text" id="score">{{currentScore}}</h1>
+        </div>
+      </div>
+      
+      <h2 id="question">Loading scenario...</h2>
+      <div class="choice-container">
+        <p class="choice-prefix">A</p>
+        <p class="choice-text" data-number="1">Choice 1</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">B</p>
+        <p class="choice-text" data-number="2">Choice 2</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">C</p>
+        <p class="choice-text" data-number="3">Choice 3</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">D</p>
+        <p class="choice-text" data-number="4">Choice 4</p>
+      </div>
+    </div>
+  </div>
+  
+  <canvas id="renderer"></canvas>
+  <script type="module" src="/scripts/3game.js"></script>
+</body>
+
+</html>

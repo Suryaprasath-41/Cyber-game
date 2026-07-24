@@ -1,0 +1,136 @@
+.user-profile-btn a {
+  /*Button Text Style*/
+  font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  /*Button Color & Border*/
+  border: 4px solid #3c14d0;
+  color: #3c14d0;
+  background: #fff;
+  /*Position, Display, Size*/
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+
+  padding: 15px 10px 14px;
+  cursor: pointer;
+}
+
+.user-profile-btn a {
+  text-decoration: none;
+}
+
+.user-profile-btn a:after {
+  text-decoration: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  border: 2px solid #35ff9e;
+  background-color: #3c14d0;
+
+  right: 4px;
+  top: 4px;
+  /*Place a:after behind button*/
+  z-index: -1;
+  content: '';
+  /*Animation/Transition Speed*/
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+.user-profile-btn a:hover {
+  top: 3rem;
+  right: 4rem;
+  text-decoration: none;
+}
+
+.user-profile-btn a:hover:after {
+  top: -3px;
+  right: -4px;
+  text-decoration: none;
+}
+
+.leaderboard-btn {
+  position: absolute;
+  top: 0rem;
+  right: 10rem;
+  cursor: pointer;
+}
+
+.fir-clickcircle {
+  height: 90px;
+  width: 90px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.fir-image-figure {
+  text-decoration: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+  text-decoration: none;
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  text-align: start;
+  background-color: #3f1db9;
+  border: #3a3c41 4px solid;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.fir-image-figure .caption,
+.fir-image-figure figcaption {
+  padding-left: 15px;
+}
+
+html.wf-active .fir-image-figure .fig-author-figure-title {
+  font-family: var(--fir-font-header);
+  font-size: 16px;
+}
+
+.fir-image-figure .fig-author-figure-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.fir-imageover {
+  position: relative;
+  display: flex;
+}
+
+.fir-imageover-color {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  background: var(--fir-blue-twitter-alpha);
+  background-image: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  animation: fadeInFadeOut 2s infinite;
+  top: 0;
+  left: 0;
+}
+
+.fir-imageover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: fadeInFadeOut 2s infinite;
+}
+
+.fig-author-figure-title > span {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #35ff9e;
+}

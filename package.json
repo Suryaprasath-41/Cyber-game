@@ -1,0 +1,44 @@
+{
+  "name": "mealdel",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Batuhan Ipci",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "csurf": "^1.11.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.6.0",
+    "express-session": "^1.17.3",
+    "helmet": "^8.3.0",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.13",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.24.0",
+    "sessions": "^0.0.2-7",
+    "xss-clean": "^0.1.4"
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batunpc/steakhouse-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/batunpc/steakhouse-website/issues"
+  },
+  "homepage": "https://github.com/batunpc/steakhouse-website#readme",
+  "description": "website created by Batuhan Ipci",
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "prettier": "2.7.1"
+  }
+}
