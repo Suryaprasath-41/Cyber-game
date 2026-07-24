@@ -1,20 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const score = require('../schemas/ScoreSchema');
-const Settings = require('../schemas/SettingsSchema');
+const supabase = require('../database/supabase');
 
 //home
 router.get('/', async (req, res) => {
   let userScore = null;
   let competitionOn = true;
   
-  const settings = await Settings.findOne({});
+  const { data: settings } = await supabase.from('settings').select('*').limit(1).maybeSingle();
   if (settings) {
     competitionOn = settings.competitionOn;
   }
 
   if (req.session.user) {
-    userScore = await score.findOne({ rollNumber: req.session.user.rollNumber });
+    const { data: fetchedScore } = await supabase
+      .from('scores')
+      .select('*')
+      .eq('rollNumber', req.session.user.rollNumber)
+      .maybeSingle();
+    userScore = fetchedScore;
   }
 
   res.render('home/home', {
@@ -26,6 +30,18 @@ router.get('/', async (req, res) => {
     competitionOn: competitionOn,
     style: 'style.css',
     script: 'scrolldown.js',
+  });
+});
+
+// GET: Leaderboard route (if any)
+router.get('/leaderboard', async (req, res) => {
+  const { data: scores } = await supabase.from('scores').select('*').order('weightedScore', { ascending: false }).limit(100);
+  res.render('leaderboard/leaderboard', {
+    layout: 'main',
+    title: 'Leaderboard',
+    style: 'leaderboard.css',
+    session: req.session,
+    scores: scores || []
   });
 });
 

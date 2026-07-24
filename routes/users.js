@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../schemas/UserSchema');
+const supabase = require('../database/supabase');
 const bcrypt = require('bcrypt');
 
 // middleware function to check if user logged in or not
@@ -38,7 +38,12 @@ router.post('/login', async (req, res) => {
   var password = req.body.password;
 
   try {
-    const existingUser = await user.findOne({ rollNumber: rollNumber });
+    const { data: existingUser, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('rollNumber', rollNumber)
+      .maybeSingle();
+
     if (existingUser) {
       const match = await bcrypt.compare(password, existingUser.password);
       if (match) {
@@ -60,6 +65,7 @@ router.post('/login', async (req, res) => {
     });
   } catch (e) {
     console.log(e);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -77,34 +83,52 @@ router.post('/register', async (req, res) => {
     });
   }
 
-  const existingRoll = await user.findOne({ rollNumber: rollNumber });
-  if (existingRoll) {
-    return res.render('client/register', {
-      error: 'Roll Number already exists !!',
-      title: 'Register',
-      style: 'auth.css',
-    });
-  }
-  
-  const existingName = await user.findOne({ username: username });
-  if (existingName) {
-    return res.render('client/register', {
-      error: 'This name is already taken',
-      title: 'Register',
-      style: 'auth.css',
-    });
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  var newUser = new user({
-    rollNumber: rollNumber,
-    username: username,
-    password: hashedPassword,
-  });
-
   try {
-    await newUser.save();
+    const { data: existingRoll } = await supabase
+      .from('users')
+      .select('rollNumber')
+      .eq('rollNumber', rollNumber)
+      .maybeSingle();
+
+    if (existingRoll) {
+      return res.render('client/register', {
+        error: 'Roll Number already exists !!',
+        title: 'Register',
+        style: 'auth.css',
+      });
+    }
+    
+    const { data: existingName } = await supabase
+      .from('users')
+      .select('username')
+      .eq('username', username)
+      .maybeSingle();
+
+    if (existingName) {
+      return res.render('client/register', {
+        error: 'This name is already taken',
+        title: 'Register',
+        style: 'auth.css',
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const { error: insertError } = await supabase
+      .from('users')
+      .insert([
+        {
+          rollNumber: rollNumber,
+          username: username,
+          password: hashedPassword,
+        },
+      ]);
+
+    if (insertError) {
+      console.log('Error inserting user:', insertError);
+      throw insertError;
+    }
+
     console.log('User registered successfully');
 
     req.session.authenticated = true;
@@ -117,6 +141,7 @@ router.post('/register', async (req, res) => {
     res.redirect('/game/play');
   } catch (e) {
     console.log(e);
+    res.status(500).send('Server Error');
   }
 });
 

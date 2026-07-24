@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const score = require('../schemas/ScoreSchema');
-const Settings = require('../schemas/SettingsSchema');
+const supabase = require('../database/supabase');
 
 // middleware function to check if user logged in or not
 function isAuthenticated(req, res, next) {
@@ -15,7 +14,8 @@ function isAuthenticated(req, res, next) {
 // GET: Unified continuous game
 router.get('/play', isAuthenticated, async (req, res) => {
   // Check if competition is ON
-  const settings = await Settings.findOne({});
+  const { data: settings } = await supabase.from('settings').select('*').limit(1).maybeSingle();
+  
   if (settings && settings.competitionOn === false) {
     return res.render('home/home', {
       layout: 'main',
@@ -26,19 +26,33 @@ router.get('/play', isAuthenticated, async (req, res) => {
   }
 
   // Get user's current progress
-  let userScore = await score.findOne({ rollNumber: req.session.user.rollNumber });
+  let { data: userScore } = await supabase
+    .from('scores')
+    .select('*')
+    .eq('rollNumber', req.session.user.rollNumber)
+    .maybeSingle();
+
   if (!userScore) {
-    userScore = new score({
-      rollNumber: req.session.user.rollNumber,
-      username: req.session.user.username,
-      score: 0,
-      weightedScore: 0,
-      accuracy: 0,
-      time: 0,
-      currentSection: 1,
-      completionStatus: 'In Progress'
-    });
-    await userScore.save();
+    const { data: newScore, error } = await supabase
+      .from('scores')
+      .insert([{
+        rollNumber: req.session.user.rollNumber,
+        username: req.session.user.username,
+        score: 0,
+        weightedScore: 0,
+        accuracy: 0,
+        time: 0,
+        currentSection: 1,
+        completionStatus: 'In Progress'
+      }])
+      .select()
+      .single();
+    
+    if (error) {
+      console.error(error);
+      return res.status(500).send('Database error');
+    }
+    userScore = newScore;
   } else if (userScore.completionStatus === 'Completed') {
      return res.redirect('/game/end');
   }
@@ -59,8 +73,13 @@ router.get('/play', isAuthenticated, async (req, res) => {
 router.post('/api/score', isAuthenticated, async (req, res) => {
   const { additionalScore, timeSpent, sectionCompleted, passed, correctAnswers, totalQuestions } = req.body;
   
-  let userScore = await score.findOne({ rollNumber: req.session.user.rollNumber });
-  if (!userScore || userScore.completionStatus === 'Completed') {
+  let { data: userScore, error: findError } = await supabase
+    .from('scores')
+    .select('*')
+    .eq('rollNumber', req.session.user.rollNumber)
+    .maybeSingle();
+
+  if (findError || !userScore || userScore.completionStatus === 'Completed') {
     return res.status(400).json({ error: 'Invalid operation' });
   }
 
@@ -84,18 +103,39 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
     userScore.currentSection += 1;
     if (userScore.currentSection > 4) {
       userScore.completionStatus = 'Completed';
-      userScore.completedAt = Date.now();
+      userScore.completedAt = new Date().toISOString();
     }
   }
 
-  await userScore.save();
+  const { error: updateError } = await supabase
+    .from('scores')
+    .update({
+      score: userScore.score,
+      time: userScore.time,
+      accuracy: userScore.accuracy,
+      weightedScore: userScore.weightedScore,
+      currentSection: userScore.currentSection,
+      completionStatus: userScore.completionStatus,
+      completedAt: userScore.completedAt
+    })
+    .eq('rollNumber', req.session.user.rollNumber);
+
+  if (updateError) {
+    console.error(updateError);
+    return res.status(500).json({ error: 'Failed to update score' });
+  }
 
   res.json({ success: true, currentSection: userScore.currentSection, completionStatus: userScore.completionStatus, weightedScore: userScore.weightedScore });
 });
 
 // GET: End of game screen
 router.get('/end', isAuthenticated, async (req, res) => {
-  let userScore = await score.findOne({ rollNumber: req.session.user.rollNumber });
+  let { data: userScore } = await supabase
+    .from('scores')
+    .select('*')
+    .eq('rollNumber', req.session.user.rollNumber)
+    .maybeSingle();
+
   res.render('game/end', {
     layout: 'main',
     title: 'Competition Completed',

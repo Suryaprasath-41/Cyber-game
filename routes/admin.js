@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Admin = require('../schemas/AdminSchema');
-const Score = require('../schemas/ScoreSchema');
-const Settings = require('../schemas/SettingsSchema');
+const supabase = require('../database/supabase');
 const bcrypt = require('bcrypt');
 
 // Admin Auth Middleware
@@ -19,11 +17,10 @@ router.get('/login', async (req, res) => {
   if (req.session.admin) return res.redirect('/admin/dashboard');
 
   // Ensure default admin exists
-  const existingAdmin = await Admin.findOne({ username: 'admin' });
+  const { data: existingAdmin } = await supabase.from('admins').select('*').eq('username', 'admin').maybeSingle();
   if (!existingAdmin) {
     const defaultPassword = await bcrypt.hash('admin123', 10);
-    const newAdmin = new Admin({ username: 'admin', password: defaultPassword });
-    await newAdmin.save();
+    await supabase.from('admins').insert([{ username: 'admin', password: defaultPassword }]);
   }
 
   res.render('client/login', {
@@ -41,7 +38,7 @@ router.post('/login', async (req, res) => {
   var password = req.body.password;
 
   try {
-    const adminUser = await Admin.findOne({ username: username });
+    const { data: adminUser } = await supabase.from('admins').select('*').eq('username', username).maybeSingle();
     if (adminUser) {
       const match = await bcrypt.compare(password, adminUser.password);
       if (match) {
@@ -68,26 +65,26 @@ router.get('/logout', (req, res) => {
 
 // GET: Admin Dashboard
 router.get('/dashboard', isAdmin, async (req, res) => {
-  const settings = await Settings.findOne({}) || await (new Settings()).save();
+  let { data: settings } = await supabase.from('settings').select('*').limit(1).maybeSingle();
+  if (!settings) {
+    const { data: newSettings } = await supabase.from('settings').insert([{ competitionOn: true }]).select().single();
+    settings = newSettings || { competitionOn: true };
+  }
   
   const search = req.query.search || '';
-  let query = {};
+  let query = supabase.from('scores').select('*').order('weightedScore', { ascending: false });
+  
   if (search) {
-    query = {
-      $or: [
-        { rollNumber: { $regex: search, $options: 'i' } },
-        { username: { $regex: search, $options: 'i' } }
-      ]
-    };
+    query = query.or(`rollNumber.ilike.%${search}%,username.ilike.%${search}%`);
   }
 
-  const scores = await Score.find(query).sort({ weightedScore: -1 }).lean();
+  const { data: scores } = await query;
 
   res.render('admin/dashboard', {
     layout: 'main',
     title: 'Admin Dashboard',
     style: 'leaderboard.css',
-    scores: scores,
+    scores: scores || [],
     search: search,
     competitionOn: settings.competitionOn
   });
@@ -95,21 +92,24 @@ router.get('/dashboard', isAdmin, async (req, res) => {
 
 // POST: Toggle Competition
 router.post('/toggle-competition', isAdmin, async (req, res) => {
-  let settings = await Settings.findOne({});
-  if (!settings) settings = new Settings();
-  
-  settings.competitionOn = !settings.competitionOn;
-  await settings.save();
+  let { data: settings } = await supabase.from('settings').select('*').limit(1).maybeSingle();
+  if (!settings) {
+    const { data: newSettings } = await supabase.from('settings').insert([{ competitionOn: false }]).select().single();
+    settings = newSettings;
+  } else {
+    await supabase.from('settings').update({ competitionOn: !settings.competitionOn }).eq('id', settings.id);
+  }
   
   res.redirect('/admin/dashboard');
 });
 
 // GET: Export CSV
 router.get('/export', isAdmin, async (req, res) => {
-  const scores = await Score.find({}).sort({ weightedScore: -1 }).lean();
+  const { data: scores } = await supabase.from('scores').select('*').order('weightedScore', { ascending: false });
+  
   let csv = 'Roll Number,Name,Score,Accuracy (%),Time (s),Weighted Score,Current Section,Status\n';
   
-  scores.forEach(s => {
+  (scores || []).forEach(s => {
     csv += `"${s.rollNumber}","${s.username}",${s.score},${s.accuracy},${s.time},${s.weightedScore},${s.currentSection},"${s.completionStatus}"\n`;
   });
   
