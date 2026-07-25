@@ -86,30 +86,28 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
   }
 
   // Update metrics
+  userScore.score += (additionalScore || 0);
   userScore.time += (timeSpent || 0);
   
-  if (passed) {
-    userScore.score += (additionalScore || 0);
-    
-    // Track correct and wrong answers cumulatively
-    let incomingCorrect = (correctAnswers || 0);
-    let incomingWrong = 0;
-    if (totalQuestions > 0) {
-        incomingWrong = totalQuestions - incomingCorrect;
-    }
-    
-    userScore.correctAnswers = (userScore.correctAnswers || 0) + incomingCorrect;
-    userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
-  }
-
-  // Calculate accuracy based on current section
+  // Track correct and wrong answers cumulatively
+  let incomingCorrect = (correctAnswers || 0);
+  let incomingWrong = 0;
   if (totalQuestions > 0) {
-    userScore.accuracy = (correctAnswers / totalQuestions) * 100;
+      incomingWrong = totalQuestions - incomingCorrect;
+  }
+  
+  userScore.correctAnswers = (userScore.correctAnswers || 0) + incomingCorrect;
+  userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
+  
+  // Calculate accuracy based on cumulative totals
+  let totalAnswered = userScore.correctAnswers + userScore.wrongAnswers;
+  if (totalAnswered > 0) {
+    userScore.accuracy = (userScore.correctAnswers / totalAnswered) * 100;
   }
 
   // Server-side Weighted Score Calculation
   // Example formula: (Score * 10) + (Accuracy * 5) - (Time / 10)
-  userScore.weightedScore = Math.max(0, (userScore.score * 10) + (userScore.accuracy * 5) - (userScore.time / 10));
+  userScore.weightedScore = Math.max(0, Math.round((userScore.score * 10) + (userScore.accuracy * 5) - (userScore.time / 10)));
 
   if (sectionCompleted && passed) {
     userScore.currentSection += 1;
@@ -124,6 +122,8 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
     .update({
       score: userScore.score,
       time: userScore.time,
+      correctAnswers: userScore.correctAnswers,
+      wrongAnswers: userScore.wrongAnswers,
       accuracy: userScore.accuracy,
       weightedScore: userScore.weightedScore,
       currentSection: userScore.currentSection,
