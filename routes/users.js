@@ -12,7 +12,9 @@ function isAuthenticated(req, res, next) {
   }
 }
 
-router.get('/login', isAuthenticated, (req, res) => {
+router.get('/login', (req, res) => {
+  if (req.session) req.session.destroy();
+  res.clearCookie('connect.sid');
   res.render('client/login', {
     title: 'Login',
     style: 'auth.css',
@@ -20,12 +22,15 @@ router.get('/login', isAuthenticated, (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  req.session.destroy();
+  if (req.session) req.session.destroy();
+  res.clearCookie('connect.sid');
   res.redirect('/');
 });
 
 // GET: Register route
-router.get('/register', isAuthenticated, (req, res) => {
+router.get('/register', (req, res) => {
+  if (req.session) req.session.destroy();
+  res.clearCookie('connect.sid');
   res.render('client/register', {
     title: 'Register',
     style: 'auth.css',

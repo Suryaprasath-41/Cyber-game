@@ -38,7 +38,7 @@ app.use(
     secret: 'prj2022exploit',
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 30000000 },
+    // Removed maxAge so cookies clear when browser tab/window is closed
   })
 );
 
