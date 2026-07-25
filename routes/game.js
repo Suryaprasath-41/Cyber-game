@@ -86,19 +86,22 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
   }
 
   // Update metrics
-  userScore.score += (additionalScore || 0);
   userScore.time += (timeSpent || 0);
   
-  // Track correct and wrong answers cumulatively
-  let incomingCorrect = (correctAnswers || 0);
-  let incomingWrong = 0;
-  if (totalQuestions > 0) {
-      incomingWrong = totalQuestions - incomingCorrect;
+  if (passed) {
+    userScore.score += (additionalScore || 0);
+    
+    // Track correct and wrong answers cumulatively
+    let incomingCorrect = (correctAnswers || 0);
+    let incomingWrong = 0;
+    if (totalQuestions > 0) {
+        incomingWrong = totalQuestions - incomingCorrect;
+    }
+    
+    userScore.correctAnswers = (userScore.correctAnswers || 0) + incomingCorrect;
+    userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
   }
-  
-  userScore.correctAnswers = (userScore.correctAnswers || 0) + incomingCorrect;
-  userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
-  
+
   // Calculate accuracy based on cumulative totals
   let totalAnswered = userScore.correctAnswers + userScore.wrongAnswers;
   if (totalAnswered > 0) {

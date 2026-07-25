@@ -16,9 +16,12 @@ app.use(helmet({
 }));
 app.use(xss());
 
+// Trust the Render proxy so IP rate limiting works per user instead of blocking everyone
+app.set('trust proxy', 1);
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200 // limit each IP to 200 requests per windowMs
+  max: 100000 // Increased from 200 to 100000 to accommodate entire labs/schools
 });
 app.use(limiter);
 
