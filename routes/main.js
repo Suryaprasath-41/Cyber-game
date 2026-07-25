@@ -33,16 +33,5 @@ router.get('/', async (req, res) => {
   });
 });
 
-// GET: Leaderboard route (if any)
-router.get('/leaderboard', async (req, res) => {
-  const { data: scores } = await supabase.from('scores').select('*').order('weightedScore', { ascending: false }).limit(100);
-  res.render('leaderboard/leaderboard', {
-    layout: 'main',
-    title: 'Leaderboard',
-    style: 'leaderboard.css',
-    session: req.session,
-    scores: scores || []
-  });
-});
 
 module.exports = router;

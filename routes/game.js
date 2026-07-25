@@ -42,6 +42,8 @@ router.get('/play', isAuthenticated, async (req, res) => {
         weightedScore: 0,
         accuracy: 0,
         time: 0,
+        correctAnswers: 0,
+        wrongAnswers: 0,
         currentSection: 1,
         completionStatus: 'In Progress'
       }])
@@ -87,12 +89,20 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
   userScore.score += (additionalScore || 0);
   userScore.time += (timeSpent || 0);
   
-  // Calculate accuracy based on cumulative or this section
+  // Track correct and wrong answers cumulatively
+  let incomingCorrect = (correctAnswers || 0);
+  let incomingWrong = 0;
   if (totalQuestions > 0) {
-    let currentAcc = (correctAnswers / totalQuestions) * 100;
-    // Simple average if moving through sections, or just keep latest if we track per section.
-    // For simplicity, we just use the latest section's accuracy as part of the weighted score.
-    userScore.accuracy = currentAcc;
+      incomingWrong = totalQuestions - incomingCorrect;
+  }
+  
+  userScore.correctAnswers = (userScore.correctAnswers || 0) + incomingCorrect;
+  userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
+  
+  // Calculate accuracy based on cumulative totals
+  let totalAnswered = userScore.correctAnswers + userScore.wrongAnswers;
+  if (totalAnswered > 0) {
+    userScore.accuracy = (userScore.correctAnswers / totalAnswered) * 100;
   }
 
   // Server-side Weighted Score Calculation
@@ -112,6 +122,8 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
     .update({
       score: userScore.score,
       time: userScore.time,
+      correctAnswers: userScore.correctAnswers,
+      wrongAnswers: userScore.wrongAnswers,
       accuracy: userScore.accuracy,
       weightedScore: userScore.weightedScore,
       currentSection: userScore.currentSection,

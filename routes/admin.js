@@ -16,11 +16,14 @@ function isAdmin(req, res, next) {
 router.get('/login', async (req, res) => {
   if (req.session.admin) return res.redirect('/admin/dashboard');
 
-  // Ensure default admin exists
-  const { data: existingAdmin } = await supabase.from('admins').select('*').eq('username', 'admin').maybeSingle();
-  if (!existingAdmin) {
-    const defaultPassword = await bcrypt.hash('admin123', 10);
-    await supabase.from('admins').insert([{ username: 'admin', password: defaultPassword }]);
+  // Ensure required admins exist
+  const adminUsers = ['CSBS', 'Samyukth'];
+  for (const user of adminUsers) {
+    const { data: existingAdmin } = await supabase.from('admins').select('*').eq('username', user).maybeSingle();
+    if (!existingAdmin) {
+      const defaultPassword = await bcrypt.hash('smart', 10);
+      await supabase.from('admins').insert([{ username: user, password: defaultPassword }]);
+    }
   }
 
   res.render('client/login', {
