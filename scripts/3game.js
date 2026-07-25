@@ -25688,7 +25688,7 @@ const Fi = new B_(async (s) => {
 
   const t = async (o, l, c) => {
     if (o === 'END_SECTION') {
-      let pass = (Ic.correctAnswers / cr.length) * 100 >= 60;
+      let pass = Ic.score >= 60;
       try {
         let resp = await fetch('/game/api/score', {
           method: 'POST',
@@ -25749,6 +25749,9 @@ const Fi = new B_(async (s) => {
       if (Na === cr.length) { h -= 30; }
       s.pass(js + Zn.z, h);
     } else {
+      if (Ic.score >= 60) {
+        return t('END_SECTION', Ic.score, Ic.totalTime);
+      }
       s.fail();
       showFailedMessage(() => {
         s.model.position.z = initialRobotZ;
