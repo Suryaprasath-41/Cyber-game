@@ -1,0 +1,67 @@
+<i id="levelNum" style="display: none;">{{sectionId}}</i>
+<div id="loading" style="z-index: 150;position: absolute;width: 100vw;height: 100vh;background-color: #000; color: #35ff9e; display: flex; align-items: center; justify-content: center; font-family: monospace;">
+  <h2>Initializing Simulation...</h2>
+</div>
+<div id="lostMessage" style="display: none; z-index: 200;">
+  <span id="message">Section Complete</span>
+  <span id="postScore">Score: 0</span>
+  <span id="nextButton">Proceed to Next Phase</span>
+  <span id="restartButton" style="display: none;">Restart</span>
+</div>
+<div class="container" id="container" style="display: none; z-index: 100;">
+  <div id="game" class="justify-center flex-column">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2 id="progressText" class="heading" style="margin:0;">Section {{sectionId}}</h2>
+      <div style="color: #35ff9e; font-family: monospace; font-size: 1.2rem; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px;">
+        Operator: {{playerName}} [{{playerRoll}}]
+      </div>
+    </div>
+    
+    <div id="hud">
+      <div id="hud-item">
+        <div class="timer">
+          <span>
+            <h2 id="timer">60</h2>
+          </span>
+        </div>
+        <div id="progressBar">
+          <div id="progressBarFull"></div>
+        </div>
+      </div>
+      <div id="hud-item">
+        <p class="hud-prefix">Accuracy</p>
+        <h1 class="hud-main-text" id="accuracy">100%</h1>
+      </div>
+      <div id="hud-item">
+        <p class="hud-prefix">Score</p>
+        <h1 class="hud-main-text" id="score">0</h1>
+      </div>
+    </div>
+
+    <!-- Added Hint Container -->
+    <div id="hint-container" style="display: none; margin-bottom: 15px; padding: 15px; border-left: 4px solid #ff4d4d; background: rgba(255, 77, 77, 0.1); color: #ff4d4d;">
+    </div>
+
+    <h2 id="question">Loading scenario...</h2>
+    <div id="options-wrapper">
+      <div class="choice-container">
+        <p class="choice-prefix">A</p>
+        <p class="choice-text" data-number="1">Choice 1</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">B</p>
+        <p class="choice-text" data-number="2">Choice 2</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">C</p>
+        <p class="choice-text" data-number="3">Choice 3</p>
+      </div>
+      <div class="choice-container">
+        <p class="choice-prefix">D</p>
+        <p class="choice-text" data-number="4">Choice 4</p>
+      </div>
+    </div>
+  </div>
+</div>
+<canvas id="renderer"></canvas>
+<script type="module" src="/scripts/3game.js"></script>
