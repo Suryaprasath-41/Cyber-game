@@ -102,10 +102,9 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
     userScore.wrongAnswers = (userScore.wrongAnswers || 0) + incomingWrong;
   }
 
-  // Calculate accuracy based on cumulative totals
-  let totalAnswered = userScore.correctAnswers + userScore.wrongAnswers;
-  if (totalAnswered > 0) {
-    userScore.accuracy = (userScore.correctAnswers / totalAnswered) * 100;
+  // Calculate accuracy based on current section
+  if (totalQuestions > 0) {
+    userScore.accuracy = (correctAnswers / totalQuestions) * 100;
   }
 
   // Server-side Weighted Score Calculation
@@ -125,8 +124,6 @@ router.post('/api/score', isAuthenticated, async (req, res) => {
     .update({
       score: userScore.score,
       time: userScore.time,
-      correctAnswers: userScore.correctAnswers,
-      wrongAnswers: userScore.wrongAnswers,
       accuracy: userScore.accuracy,
       weightedScore: userScore.weightedScore,
       currentSection: userScore.currentSection,
